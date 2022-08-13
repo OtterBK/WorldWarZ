@@ -1,0 +1,22 @@
+name: WorldWarZ
+version: ${project.version}
+main: worldwarz.worldwarz.WorldWarZ
+commands:
+  계급:
+    description: promote command
+    aliases:
+    permission: op.promote
+    permission-message: 권한이 부족합니다.
+    usage: /<command> <닉네임>
+  좀비:
+    description: zombie kill count command
+    aliases:
+    permission: op.promote
+    permission-message: 권한이 부족합니다.
+    usage: /<command> <닉네임>
+  playerdatareload:
+    description: playerdata reload command
+    aliases:
+    permission: op
+    permission-message: 권한이 부족합니다.
+    usage: /<command> <닉네임>

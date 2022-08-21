@@ -28,10 +28,20 @@ public class TimeAlertModule {
                 long timeSecond = (long)(timeTick / 20);
                 if(timeSecond == 1190){
                     Bukkit.broadcastMessage("§f[§6곧 날이 밝습니다.§f]");
-                    MyUtility.playSoundForAllPlayer(Sound.ENTITY_CHICKEN_AMBIENT, 1.5f, 0.8f);
+                    MyUtility.sendTitleForAllPlayer("", "§6곧 날이 밝습니다.");
+                    MyUtility.playSoundForAllPlayer(Sound.ENTITY_CHICKEN_AMBIENT, 1.5f, 0.75f);
+                } else if(timeSecond == 50){
+                    Bukkit.broadcastMessage("§f[§6날이 밝았습니다.§f]");
+                    MyUtility.sendTitleForAllPlayer("", "§6날이 밝았습니다.");
+                    MyUtility.playSoundForAllPlayer(Sound.ENTITY_CHICKEN_AMBIENT, 1.5f, 1.0f);
                 } else if(timeSecond == 569){
                     Bukkit.broadcastMessage("§f[§7곧 밤이 되어 좀비가 몰려옵니다...§f]");
+                    MyUtility.sendTitleForAllPlayer("", "§7곧 밤이 됩니다.");
                     MyUtility.playSoundForAllPlayer(Sound.ENTITY_ZOMBIE_AMBIENT, 1.5f, 0.6f);
+                } else if(timeSecond == 629){
+                    Bukkit.broadcastMessage("§f[§7c밤이 되었습니다...§f]");
+                    MyUtility.sendTitleForAllPlayer("", "§7밤이 되었습니다.");
+                    MyUtility.playSoundForAllPlayer(Sound.ENTITY_ZOMBIE_HORSE_AMBIENT, 1.5f, 0.25f);
                 }
             }
         }, 0l, 20l); //TODO 이러면 오차 생기지 않을까?

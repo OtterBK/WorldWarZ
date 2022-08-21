@@ -9,6 +9,7 @@ import java.util.Set;
 
 public enum CustomEntities {
 
+    //여기에다 CustomEntity 선언하면됨
     MYSUPERZOMBIE("MySuperZombie", 54, EntityType.ZOMBIE, EntityZombie.class, TestZombie.class);
 
     private String name;

@@ -134,6 +134,7 @@ public class CommonData {
                 if(playerData == null){ //로드 안되면, 아예 신규
                     String playerDataFilePath = getPlayerDataFilePath(player);
                     playerData = new PlayerData(playerDataFilePath);
+                    playerData.playerName = player.getName();
                     playerData.saveData();
                     LogUtility.printLog(LogUtility.LogLevel.INFO, player.getName() + "의 플레이어 데이터 신규 생성됨 [UUID: "
                             + playerData.uuid + "]");

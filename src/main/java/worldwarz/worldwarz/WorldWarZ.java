@@ -1,6 +1,7 @@
 package worldwarz.worldwarz;
 
 import org.bukkit.Bukkit;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.Sound;
 import org.bukkit.craftbukkit.v1_12_R1.CraftWorld;
 import org.bukkit.entity.Player;
@@ -16,6 +17,8 @@ import worldwarz.worldwarz.promotemodule.PromoteModule;
 import worldwarz.worldwarz.timealertmodule.TimeAlertModule;
 import worldwarz.worldwarz.utils.LogUtility;
 import worldwarz.worldwarz.utils.MyUtility;
+
+import java.util.UUID;
 
 public final class WorldWarZ extends JavaPlugin implements Listener {
 
@@ -63,18 +66,25 @@ public final class WorldWarZ extends JavaPlugin implements Listener {
     }
 
     public void testfunc(Player player){
-        TestZombie zombie = new TestZombie(player.getLocation());
+        TestZombie zombie = new TestZombie(player.getLocation().clone().add(50,0,0));
         ((CraftWorld)player.getLocation().getWorld()).getHandle().addEntity(zombie, CreatureSpawnEvent.SpawnReason.CUSTOM);
+
     }
 
     @EventHandler
     public void onCommandInput(PlayerCommandPreprocessEvent evt){
         Player player = evt.getPlayer();
-        if(evt.getMessage().equalsIgnoreCase("/test") && player.isOp()){
+        String[] args = evt.getMessage().split(" ");
+        String cmd = args[0];
+        if(cmd.equalsIgnoreCase("/test") && player.isOp()){
             player.sendMessage("test");
             testfunc(player);
-        } else if(evt.getMessage().equalsIgnoreCase("/playerdatareload")){
+        } else if(cmd.equalsIgnoreCase("/playerdatareload")){
             CommonData.loadAllPlayerData();
+        } else if(cmd.equalsIgnoreCase("/uuidtest")){
+            String uuid = args[1];
+            OfflinePlayer targetPlayer = Bukkit.getOfflinePlayer(UUID.fromString(uuid));
+            player.sendMessage("name: " + targetPlayer.getPlayer().getName());
         }
     }
 

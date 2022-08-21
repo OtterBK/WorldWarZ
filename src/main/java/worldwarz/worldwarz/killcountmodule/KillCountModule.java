@@ -13,15 +13,13 @@ import worldwarz.worldwarz.datamodule.CommonData;
 import worldwarz.worldwarz.datamodule.PlayerData;
 
 import javax.swing.*;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class KillCountModule implements Listener {
 
     Plugin serverPlugin = null;
     final String msgPrefix = "§f[ §b킬스택 §f] ";
+    final int maxShowCount = 30;
 
     public KillCountModule(Plugin serverPlugin){
         this.serverPlugin = serverPlugin;
@@ -42,13 +40,14 @@ public class KillCountModule implements Listener {
         }
 
         List<Map.Entry<String, Integer>> entryList = new LinkedList<>(zombieKillMap.entrySet());
-        entryList.sort(Map.Entry.comparingByValue()); //정렬
+        Collections.sort(entryList, Map.Entry.comparingByValue()); //정렬
+        Collections.reverse(entryList);
 
         int showCount = 0;
         player.sendMessage(msgPrefix + "좀비 처치 순위:");
         for(Map.Entry<String, Integer> entry : entryList){
-            player.sendMessage(msgPrefix + "[§b"+entry.getKey()+" §f: §c"+entry.getValue()+"킬§f]");
-            if(++showCount >= 5) break;
+            player.sendMessage(msgPrefix + "§b"+entry.getKey()+" §f: §c"+entry.getValue()+"킬§f");
+            if(++showCount >= maxShowCount) break;
         }
     }
 

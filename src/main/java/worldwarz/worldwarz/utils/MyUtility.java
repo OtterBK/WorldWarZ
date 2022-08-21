@@ -40,6 +40,12 @@ public class MyUtility {
 		}
 	}
 
+	public static void sendTitleForAllPlayer(String title, String subTitle){
+		for(Player onlinePlayer : Bukkit.getOnlinePlayers()){
+			onlinePlayer.sendTitle(title,subTitle, 50, 15, 15);
+		}
+	}
+
 	public static void playSoundForAllPlayer(Sound sound, float volume, float pitch){
 
 		for(Player onlinePlayer : Bukkit.getOnlinePlayers()){

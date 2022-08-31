@@ -17,7 +17,8 @@ public class WorldWarZEvent implements Listener {
 
     @EventHandler
     public void onPlayerDeath(PlayerDeathEvent evt){
-        evt.setDeathMessage("§c누군가 사망하였습니다...");
+//        evt.setDeathMessage("§c누군가 사망하였습니다...");
+        evt.setDeathMessage(null);
         MyUtility.playSoundForAllPlayer(Sound.ENTITY_GHAST_SCREAM, 1.5F, 0.5F);
     }
 
